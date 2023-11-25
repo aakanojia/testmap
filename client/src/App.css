@@ -1,0 +1,718 @@
+/* CSS FOR THE MAIN APPLICATION */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+}
+
+/* CSS FOR BANNER */
+.banner {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    grid-template-rows: 100%;
+    border: 2px solid black;
+    background-color: #e6e6e6;
+    position: relative;
+    
+}
+
+.banner div {
+    position:relative;
+}
+
+.banner img {
+    height: 55%;
+    width: 85%;
+    left:5%;
+    top:25%;
+    position: absolute;
+    cursor: pointer;
+}
+
+div.banner > div:first-child {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+div.banner #search_bar {
+    width: 60%;
+    height: 40%;
+    top: 25%;
+    left: 2%;
+    display: flex;
+    align-items: center;
+    position:absolute;
+    background: white;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+#searchContainer {
+    grid-area: 1 / 2 / 2/ 3;
+}
+
+#search_bar #search_input {
+    left:2%;
+    height:75%;
+    font-size: 18px;
+    border: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    outline: none;
+    width: 90%;
+    position:relative;
+}
+
+#accountCircle {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.mapTitle {
+    display: flex;
+    align-items: center;
+}
+
+.mapTitle p:first-child {
+    font-size: 32px;
+    margin-left: 25px;
+    margin-right: 50px;
+}
+
+/* CSS FOR SPLASH SCREEN */
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #232323;
+    position:relative;
+}
+
+.background img {
+    width:100%;
+    height:75%;
+}
+
+.background #logo {
+    position: absolute;
+    top:22%;
+    left:12%;
+    width:80%;
+    height:40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#logo #splash_title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 180px;
+    text-align: center;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    color: white;
+    text-shadow: 6px 5px 10px black;
+}
+
+#logo #splash_desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 45px;
+    text-align: center;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    letter-spacing: 20px;
+    color: white;
+    text-shadow: 6px 5px 10px black;
+    flex-grow: 1;
+}
+
+#loginPageAccess {
+    position: absolute;
+    top:63%;
+    left:42%;
+    width:20%;
+    height:15%;
+    display: flex;
+    flex-direction: column;
+}
+
+#loginPageAccess button {
+    height:50px;
+    width:100%;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+}
+
+#loginPageAccess a {
+    margin: 0;
+    padding-top: 5px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size:18px;
+    text-align: center;
+    text-decoration: none;
+    flex-grow: 1;
+}
+
+/* CSS FOR LOGIN SCREEN */
+#login_background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ebebeb;
+    position:relative;
+}
+
+#login_background .logo {
+    position: absolute;
+    top:10%;
+    left:12%;
+    width:80%;
+    height:40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#login_title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 150px;
+    text-align: center;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    color: black;
+}
+
+#login_desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+    margin: 0;
+    width: 100%;
+    letter-spacing: 20px;
+    color: black;
+    flex-grow: 1;
+}
+
+.errorStatusBar {
+    padding: 5px 10px;
+    font-size: 24px;
+    color: red;
+    border: 1px solid red;
+}
+
+#loginFields{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position:absolute;
+    top: 50%;
+    left: 36%;
+    width: 30%;
+    height: 200px;
+    align-items: center;
+}
+
+#loginFields div {
+    width: 100%;
+}
+
+#loginBtn {
+    width: 50%;
+    height: 50px;
+    border-radius: 30px;
+    background: #c9f1fd;
+}
+
+.accountText {
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.accountText p {
+    padding: 0;
+    margin: 0;
+}
+
+.accountText a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CSS FOR REGISTRATION SCREE */
+#registration_background {
+    width: 100vw;
+    height: 100vh;
+    background-color: #ebebeb;
+    position:relative;
+    overflow-y: auto;
+}
+
+#registration_background .logo {
+    position: absolute;
+    top:10%;
+    left:12%;
+    width:80%;
+    height:40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#registration_title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 150px;
+    text-align: center;
+    padding:0;
+    margin: 0;
+    width: 100%;
+    color: black;
+}
+
+#registration_desc {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+    margin: 0;
+    width: 100%;
+    letter-spacing: 20px;
+    color: black;
+    flex-grow: 1;
+}
+
+.errorStatusBar {
+    padding: 5px 10px;
+    font-size: 24px;
+    color: red;
+    border: 1px solid red;
+}
+
+#registrationFields{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position:absolute;
+    top: 40%;
+    left: 36%;
+    width: 30%;
+    height: 200px;
+    padding-top: 20px;
+    align-items: center;
+}
+
+#registrationFields div {
+    width: 100%;
+}
+
+#btnDiv {
+    display: flex;
+    justify-content: center;
+}
+
+#registerBtn {
+    width: 50%;
+    height: 50px;
+    border-radius: 30px;
+    background: #c9f1fd;
+}
+
+/* CSS FOR PROFILE PAGE */
+.view {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    grid-template-rows: 15% 10% 75%;
+    /* border: 1px solid black; */
+}
+
+.profileBanner {
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+.navBar {
+    grid-area: 2 / 1 / 4 / 2;
+    border: 2px solid black;
+}
+
+.profileToolBar {
+    grid-area: 2 / 2 / 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 2px solid black;
+}
+
+.profileToolBar .MuiButton-root {
+    margin-left: 25px;
+    background-color: #90c2e7;
+    color: #232323;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    margin-top: 10px;
+    grid-area: 3 / 2 / 4 / 4;
+    align-items: center;
+}
+
+/* CSS FOR MAP CARD */
+.mapCard {
+    margin: 30px 75px 30px 75px;
+}
+
+/* CSS FOR MAP EDITOR */
+.toolbar {
+    height: 80vh;
+    width: 0rem;
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    background-color: #e6e6e6;
+    position:relative;
+    float: left;
+}
+
+
+.bottom-tools {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* MINEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE */
+.community-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ensure the community page is same height as the banner*/
+    overflow-x: hidden
+    
+  }
+  
+  .content {
+    display: flex;
+    
+  }
+  
+  .linkbar {
+    width: 15.1vw; /* Set the width of the linkbar to be the same as the image */
+    height: 100px;
+    height: 100%;
+    border-right: 1px solid black;
+    
+  }
+  
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .list-cards {
+    width: 85%;
+    padding: 10px;
+    overflow-x: hidden;
+    font-size: 20px;
+    
+    
+  }
+
+  .buttons {
+    grid-area: 2 / 2 / 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 2px solid black;
+  }
+
+  .buttons button{
+    font-size: 20px;
+    border: 1px solid black;
+    display: flex; /* Align content in the center */
+    justify-content: center;
+    width: 125px; 
+  }
+
+  .buttons > button:first-child {
+    margin-left: 10px;
+  }
+
+  .buttons button i{
+    margin-left: 5px;
+  }
+  
+  .list-cards-cards {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    gap: 10px;  
+    grid-area: 3 / 2 / 4 / 4;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .list-card {
+    width: 95%;
+    height: 250px;
+    border: 3px solid darkgrey;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 7px 5px 1px #23232377;
+  }
+
+  .image-container {
+    overflow: hidden;
+}
+
+
+
+.details-container {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.details-line {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+  
+  .detail{
+    margin: 0;
+    }
+ 
+    .left {
+        float: left;
+    }
+    
+    .center {
+        text-align: center;
+    }
+    
+    .right {
+        float: right;
+    }
+
+    .up{
+        margin-right: 7px;
+    }
+    
+  
+  @media (max-width: 600px) {
+    .list-card {
+      width: calc(100% - 10px); /* Adjust card width for smaller screens */
+    }
+  }
+  
+
+.toolprop {
+    height: 0rem;
+    width: 653vw;
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    background-color: rgb(0, 0, 0);
+    padding-left: 41px;
+}
+
+.mapEditor {
+    position: relative;
+    width: 100vw;
+    height: 100vh; /* Adjust height as needed */
+    height: 1000px; /* Adjust height as needed */
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.editTools {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Higher index to be on top */
+    width: 40px; /* Adjust as needed */
+}
+
+.invisibleBox {
+    box-shadow: none;
+}
+
+.editProperties {
+    height: 0rem;
+    display: grid;
+    grid-template-columns: 15% 75% 10%;
+    background-color: rgb(17, 12, 12);
+    position: absolute;
+    padding-right: 100px;
+    top: 210px;
+    left: 1200px;
+    width: 500px;
+
+}
+
+.mapView {
+    position: relative; /* or absolute, depending on your layout needs */
+    z-index: 1;
+    height: 100%; /* Ensure the map has height */
+    width: 60%; /* Ensure the map has width */
+    left: 100px;
+    top: 250px;
+}
+.viewCmap {
+    display: flex;
+    grid-column: 2 / 3;
+    flex-direction: column;
+    gap: 0px;
+    overflow: auto;
+    position:relative;
+}
+.comment{
+    width: 100%;
+    padding: 10px;
+    overflow-x: hidden;
+}
+.mapImage{
+    width: 500px;
+    height: 320px;
+    display: block;
+}
+
+#commentDiv {
+    display:flex;
+    margin-left:20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    gap: 15px;
+    align-items: center;
+}
+
+#add_comment{
+    width: 500px;
+    height: 70px;
+}
+
+.viewMapContent {
+    grid-area: 3 / 2 / 4 / 4;
+    overflow-y: auto;
+}
+
+.displayMapInfo {
+    display:flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin-left: 40px;
+    padding-top: 20px;
+  }
+
+
+
+/* PROFILE EDITOR PAGE */
+
+.profile-editer-main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    font-size: 20px;
+    align-items: center;
+    
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    
+    
+  }
+
+  .profile-editer-text{
+    font-size: 25px;
+    text-decoration: underline;
+  }
+  
+  .editable-username {
+    cursor: pointer;
+    padding-bottom: 2px;
+    display: inline-block;
+    max-width: fit-content;
+    
+  }
+  
+  .profile-info {
+    margin: 20px;
+  }
+  
+  .profile-info span {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .profile-info .editable-username {
+    cursor: pointer;
+    padding-bottom: 2px;
+    display: inline-block;
+    max-width: fit-content;
+  }
+  
+  .profile-info .editable-username div {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .profile-info .editable-username span {
+    margin-left: 8px; /* Adjust the spacing between the Avatar and username */
+  }
+  
+  .profile-info .editable-username.on-edit {
+    width: fit-content;
+    margin-right: 5%; 
+  }
+  
+  .profile-info .editable-username input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    max-width: 100%;
+  }
+  
+  
+
+
+.displayMapInfo > img:first-child {
+    align-self: center;
+}
+
+.cardContent {
+    display:flex;
+    width:90%;
+    flex-direction: row;
+    overflow-y:auto;
+    align-items: center;
+}
+
+.transition_screen {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    background-color: #232323;
+    z-index: 2;
+}
+
