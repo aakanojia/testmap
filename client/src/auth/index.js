@@ -113,6 +113,7 @@ function AuthContextProvider(props) {
         try{
         const response = await api.loginUser(email, password);
         if (response.status === 200) {
+            localStorage.setItem('token', response.data.token);
             authReducer({
                 type: AuthActionType.LOGIN_USER,
                 payload: {
@@ -138,6 +139,7 @@ function AuthContextProvider(props) {
     auth.logoutUser = async function() {
         const response = await api.logoutUser();
         if (response.status === 200) {
+            localStorage.removeItem('token');
             authReducer( {
                 type: AuthActionType.LOGOUT_USER,
                 payload: null

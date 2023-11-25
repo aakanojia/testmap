@@ -1,7 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const User = require('../models/User')
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 // const cors = require('cors');
 
 // router.use(cors());
@@ -68,69 +69,127 @@ router.post('/register', (req, res) => {
     reg()
 });
 
-router.post('/login', (req, res) => {
+// router.post('/login', (req, res) => {
+//     console.log("loginUser");
+
+//     let login = async () => {
+//         const { email, password } = req.body;
+//         try {
+//             if (!email || !password) {
+//                 return res
+//                     .status(400)
+//                     .json({ errorMessage: "Please enter all required fields." });
+//             }
+//             const exist = await User.findOne({ email: email });
+//             console.log("existingUser: " + exist);
+//             if (!exist) {
+//                 return res
+//                     .status(401)
+//                     .json({
+//                         errorMessage: "Wrong email or password provided."
+//                     })
+//             }
+//             console.log("provided password: " + password);
+//             const passwordCorrect = await bcrypt.compare(password, exist.passwordHash);
+//             console.log(passwordCorrect);
+//             if (!passwordCorrect) {
+//                 return res
+//                     .status(401)
+//                     .json({
+//                         errorMessage: "Wrong email or password provided."
+//                     })
+//             }
+//             else {
+//                 const token = jwt.sign(
+//                     {userID: exist._id},
+//                     process.env.JWT_SECRET,
+//                     { expiresIn: '1h' }
+//                 )
+//                 res.cookie('token', token, { httpOnly: true, maxAge: 3600000 }); // 1 hour
+//                 res.json({ message: 'Authentication successful' });
+//                 return res
+//                     .status(200)
+//                     .json(
+//                     {
+//                         token,
+//                         user: exist,
+//                         loggedIn: true,
+//                         error: null
+//                     }
+//                 )
+//             }
+
+//         } catch (err) {
+//             console.error(err);
+//         }
+//     }
+//     login()
+
+// });
+
+router.post('/login', async (req, res) => {
     console.log("loginUser");
 
-    let login = async () => {
+    try {
         const { email, password } = req.body;
-        try {
-            if (!email || !password) {
-                return res
-                    .status(400)
-                    .json({ errorMessage: "Please enter all required fields." });
-            }
-            const exist = await User.findOne({ email: email });
-            console.log("existingUser: " + exist);
-            if (!exist) {
-                return res
-                    .status(401)
-                    .json({
-                        errorMessage: "Wrong email or password provided."
-                    })
-            }
-            console.log("provided password: " + password);
-            const passwordCorrect = await bcrypt.compare(password, exist.passwordHash);
-            console.log(passwordCorrect);
-            if (!passwordCorrect) {
-                return res
-                    .status(401)
-                    .json({
-                        errorMessage: "Wrong email or password provided."
-                    })
-            }
-            else {
-                return res
-                    .status(200)
-                    .json(
-                    {
-                        user: exist,
-                        loggedIn: true,
-                        error: null
-                    }
-                )
-            }
-
-        } catch (err) {
-            console.error(err);
+        if (!email || !password) {
+            return res.status(400).json({ errorMessage: "Please enter all required fields." });
         }
-    }
-    login()
 
+        const existingUser = await User.findOne({ email: email });
+        console.log("existingUser: " + existingUser);
+        if (!existingUser) {
+            return res.status(401).json({ errorMessage: "Wrong email or password provided." });
+        }
+
+        console.log("provided password: " + password);
+        const passwordCorrect = await bcrypt.compare(password, existingUser.passwordHash);
+        console.log(passwordCorrect);
+        if (!passwordCorrect) {
+            return res.status(401).json({ errorMessage: "Wrong email or password provided." });
+        }
+
+        const token = jwt.sign({ userID: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.cookie('token', token, { httpOnly: true, sameSite: 'lax' });
+        return res.status(200).json({
+            token,
+            user: existingUser,
+            loggedIn: true,
+            error: null
+        });
+
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ errorMessage: "Internal server error" });
+    }
 });
 
+
+
+// router.post('/logout', (req, res) => {
+//     try {
+//         res.clearCookie('token');
+//         res.json({ message: 'Logged out successfully' });
+//         res.send(
+//             {
+//                 user: null,
+//                 loggedIn: false,
+//                 error: null
+//             })
+//     } catch (err) {
+//         res.send(err)
+//     }
+// });
 
 router.post('/logout', (req, res) => {
     try {
-        res.send(
-            {
-                user: null,
-                loggedIn: false,
-                error: null
-            })
+        res.clearCookie('token');
+        return res.json({ message: 'Logged out successfully', user: null, loggedIn: false, error: null });
     } catch (err) {
-        res.send(err)
+        return res.status(500).json({ errorMessage: "Internal server error" });
     }
 });
+
 
 //router.get('/loggedIn', AuthController.getLoggedIn)
 

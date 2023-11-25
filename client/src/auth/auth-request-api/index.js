@@ -1,8 +1,7 @@
 import axios from 'axios'
 const api = axios.create({
     baseURL: 'http://localhost:8000/auth',
-})
-
+});
 
 //export const getLoggedIn = () => api.get(`/loggedIn/`);
 export const loginUser = (email, password) => {

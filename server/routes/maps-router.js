@@ -6,10 +6,8 @@ const MapController = require('../controllers/map-controller')
 router.post('/Map', auth.verify, MapController.createMap);
 router.delete('/Maps/:id', auth.verify, MapController.deleteMap);
 router.get('/Maps', auth.verify, MapController.getMaps);
-//router.post('/Map', auth.verify, MapController.createMap)
-//router.delete('/Map/:id', auth.verify, MapController.deleteMap)
-//router.get('/Map/:id', auth.verify, MapController.getMapById)
-//router.get('/Mappairs', auth.verify, MapController.getMapPairs)
+router.get('/Map/:id', auth.verify, MapController.getMapById)
+router.get('/Mappairs', auth.verify, MapController.getMapPairs)
 //router.get('/Maps', auth.verify, MapController.getMaps)
 //router.put('/Map/:id', auth.verify, MapController.updateMap)
 

@@ -1,13 +1,24 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const port = 8000;
 
+dotenv.config();
+
+const corsOptions = {
+    origin: ["http://localhost:3000"],
+    //allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
+    credentials: true
+};
+
 // SETTING UP EXPRESS SERVER
 const app = express();
-app.use(cors())
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cookieParser());
 
 //SET UP MIDDLEWARE
 const authRouter = require('./routes/auth-route')

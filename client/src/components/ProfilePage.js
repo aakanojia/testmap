@@ -22,7 +22,7 @@ export default function ProfilePage() {
         // Fetch maps when the component mounts
         const fetchMaps = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/maps'); // Adjust URL as needed
+                const response = await fetch('http://localhost:8000/api/Mappairs', {credentials: 'include'}); 
                 if (response.ok) {
                     const fetchedMaps = await response.json();
                     setMaps(fetchedMaps.data || fetchedMaps);
@@ -48,6 +48,7 @@ export default function ProfilePage() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(mapData),
+                credentials: 'include'
             });
     
             if (response.ok) {
@@ -69,6 +70,7 @@ export default function ProfilePage() {
         try {
             const response = await fetch(`http://localhost:8000/api/Maps/${mapId}`, {
                 method: 'DELETE',
+                credentials: 'include'
             });
     
             if (response.ok) {
